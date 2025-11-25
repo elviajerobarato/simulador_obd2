@@ -14,7 +14,6 @@
       flex-direction: column;
       min-height: 100vh;
     }
-
     header {
       background: #222;
       padding: 1rem 1.5rem;
@@ -23,17 +22,8 @@
       justify-content: space-between;
       align-items: center;
     }
-
-    header h1 {
-      font-size: 1.3rem;
-      margin: 0;
-    }
-
-    header span {
-      font-size: 0.85rem;
-      opacity: 0.7;
-    }
-
+    header h1 { font-size: 1.3rem; margin: 0; }
+    header span { font-size: 0.85rem; opacity: 0.7; }
     main {
       display: grid;
       grid-template-columns: 1.3fr 1fr;
@@ -41,7 +31,6 @@
       padding: 1rem 1.5rem 1.5rem;
       flex: 1;
     }
-
     .panel {
       background: #1b1b1b;
       border-radius: 8px;
@@ -49,7 +38,6 @@
       border: 1px solid #333;
       box-shadow: 0 0 8px rgba(0,0,0,0.4);
     }
-
     .panel h2 {
       margin-top: 0;
       font-size: 1.1rem;
@@ -57,7 +45,6 @@
       padding-bottom: 0.4rem;
       margin-bottom: 0.7rem;
     }
-
     .fila {
       margin-bottom: 0.7rem;
       display: flex;
@@ -65,7 +52,6 @@
       gap: 0.5rem;
       flex-wrap: wrap;
     }
-
     select, button {
       background: #111;
       color: #eee;
@@ -74,108 +60,24 @@
       padding: 0.35rem 0.5rem;
       font-size: 0.9rem;
     }
-
-    button {
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #333;
-    }
-
-    button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
-    .estado {
-      font-size: 0.9rem;
-      padding: 0.3rem 0.5rem;
-      border-radius: 4px;
-      display: inline-block;
-    }
-
-    .estado.ok {
-      background: #154d27;
-      border: 1px solid #27ae60;
-    }
-
-    .estado.error {
-      background: #5a1a1a;
-      border: 1px solid #e74c3c;
-    }
-
-    .estado.neutral {
-      background: #333;
-      border: 1px solid #777;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.85rem;
-    }
-
-    th, td {
-      border: 1px solid #333;
-      padding: 0.3rem 0.4rem;
-      text-align: left;
-    }
-
-    th {
-      background: #222;
-    }
-
-    tbody tr:nth-child(even) {
-      background: #181818;
-    }
-
-    .pids {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-      gap: 0.5rem;
-    }
-
-    .pid-card {
-      background: #151515;
-      border-radius: 6px;
-      border: 1px solid #333;
-      padding: 0.5rem;
-      font-size: 0.8rem;
-    }
-
-    .pid-label {
-      font-size: 0.75rem;
-      opacity: 0.8;
-    }
-
-    .pid-value {
-      font-size: 1rem;
-      font-weight: bold;
-    }
-
-    footer {
-      font-size: 0.75rem;
-      padding: 0.4rem 1.5rem;
-      background: #111;
-      border-top: 1px solid #333;
-      opacity: 0.8;
-      text-align: right;
-    }
-
-    .log {
-      font-size: 0.8rem;
-      max-height: 150px;
-      overflow-y: auto;
-      background: #111;
-      border-radius: 4px;
-      padding: 0.4rem;
-      border: 1px solid #333;
-    }
-
-    .log-line {
-      margin: 0.15rem 0;
-    }
+    button { cursor: pointer; }
+    button:hover { background: #333; }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    .estado { font-size: 0.9rem; padding: 0.3rem 0.5rem; border-radius: 4px; display: inline-block; }
+    .estado.ok { background: #154d27; border: 1px solid #27ae60; }
+    .estado.error { background: #5a1a1a; border: 1px solid #e74c3c; }
+    .estado.neutral { background: #333; border: 1px solid #777; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    th, td { border: 1px solid #333; padding: 0.3rem 0.4rem; text-align: left; }
+    th { background: #222; }
+    tbody tr:nth-child(even) { background: #181818; }
+    .pids { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 0.5rem; }
+    .pid-card { background: #151515; border-radius: 6px; border: 1px solid #333; padding: 0.5rem; font-size: 0.8rem; }
+    .pid-label { font-size: 0.75rem; opacity: 0.8; }
+    .pid-value { font-size: 1rem; font-weight: bold; }
+    footer { font-size: 0.75rem; padding: 0.4rem 1.5rem; background: #111; border-top: 1px solid #333; opacity: 0.8; text-align: right; }
+    .log { font-size: 0.8rem; max-height: 150px; overflow-y: auto; background: #111; border-radius: 4px; padding: 0.4rem; border: 1px solid #333; }
+    .log-line { margin: 0.15rem 0; }
   </style>
 </head>
 <body>
@@ -185,7 +87,6 @@
 </header>
 
 <main>
-  <!-- Panel izquierdo: control y datos -->
   <section class="panel">
     <h2>Panel de control</h2>
 
@@ -194,13 +95,29 @@
       <select id="escenario">
         <option value="normal">Vehículo sin fallos</option>
         <option value="u1000">U1000 - Fallo comunicación CAN</option>
+        <option value="u1001">U1001 - CAN alto intermitente</option>
+        <option value="u1002">U1002 - CAN bajo inestable</option>
         <option value="p0115_u1000">P0115 + U1000 - Temp refrigerante + CAN</option>
+        <option value="p0116_u1001">P0116 + U1001 - Temp sensor baja + CAN</option>
+        <option value="p0117_u1002">P0117 + U1002 - Temp sensor alta + CAN</option>
         <option value="retrovisor_lin">Fallo retrovisor eléctrico (LIN)</option>
+        <option value="retrovisor_lin2">Retrovisor sin memoria de posición</option>
+        <option value="retrovisor_lin3">Retrovisor con plegado bloqueado</option>
         <option value="elevalunas_dcho_can">Elevalunas delantero derecho inoperativo</option>
+        <option value="elevalunas_izq_can">Elevalunas delantero izquierdo inoperativo</option>
+        <option value="elevalunas_trasero_can">Elevalunas trasero derecho inoperativo</option>
         <option value="retrovisores_plegado_lin">Retrovisores sin función de plegado</option>
+        <option value="retrovisores_plegado_lin2">Retrovisores izquierdo bloqueado</option>
+        <option value="retrovisores_plegado_lin3">Retrovisores derecho bloqueado</option>
         <option value="correccion_altura_faros">Corrección altura de faros inoperativa</option>
+        <option value="correccion_altura_faros2">Altura faros izquierda errática</option>
+        <option value="correccion_altura_faros3">Altura faros derecha errática</option>
         <option value="cierre_centralizado">Cierre centralizado con actuación parcial</option>
+        <option value="cierre_centralizado2">Puertas traseras no cierran</option>
+        <option value="cierre_centralizado3">Puertas delanteras no cierran</option>
         <option value="pantalla_sin_velocidad">Pantalla multifunción sin datos de velocidad</option>
+        <option value="pantalla_sin_velocidad2">Pantalla sin RPM</option>
+        <option value="pantalla_sin_velocidad3">Pantalla sin temperatura motor</option>
       </select>
     </div>
 
@@ -217,28 +134,23 @@
     </div>
 
     <h2>Datos en tiempo real (PIDs simulados)</h2>
-    <div class="pids" id="pidsContainer">
-      <!-- Se rellenará por JS -->
-    </div>
+    <div class="pids" id="pidsContainer"></div>
 
     <h2>Registro (log)</h2>
     <div class="log" id="log"></div>
   </section>
 
-  <!-- Panel derecho: DTC -->
   <section class="panel">
     <h2>Códigos de avería (DTC)</h2>
     <table>
       <thead>
-      <tr>
-        <th>Código</th>
-        <th>Tipo</th>
-        <th>Descripción</th>
-      </tr>
+        <tr>
+          <th>Código</th>
+          <th>Tipo</th>
+          <th>Descripción</th>
+        </tr>
       </thead>
-      <tbody id="tablaDTC">
-      <!-- Se rellena por JS -->
-      </tbody>
+      <tbody id="tablaDTC"></tbody>
     </table>
   </section>
 </main>
@@ -248,322 +160,113 @@
 </footer>
 
 <script>
-  // ======= Base de datos de escenarios =======
-  const ESCENARIOS = {
-    "normal": {
-      nombre: "Vehículo sin fallos",
-      protocolo: "ISO 15765-4 (CAN)",
-      dtc: [],
-      pids: {
-        rpm: { base: 800, variacion: 150 },
-        tempRefrigerante: { base: 85, variacion: 5 },
-        velocidad: { base: 0, variacion: 5 },
-        tensionBateria: { base: 13.8, variacion: 0.3 }
-      }
-    },
-    "u1000": {
-      nombre: "Error de comunicación CAN",
-      protocolo: "ISO 15765-4 (CAN)",
-      dtc: [
-        { codigo: "U1000", tipo: "Red / Comunicación", descripcion: "Error genérico de comunicación en red CAN" }
-      ],
-      pids: {
-        rpm: { base: 850, variacion: 200 },
-        tempRefrigerante: { base: 90, variacion: 3 },
-        velocidad: { base: 0, variacion: 10 },
-        tensionBateria: { base: 11.5, variacion: 0.5 }
-      }
-    },
-    "p0115_u1000": {
-      nombre: "Fallo sensor de temp. refrigerante + error CAN",
-      protocolo: "ISO 15765-4 (CAN)",
-      dtc: [
-        { codigo: "P0115", tipo: "Motor", descripcion: "Circuito del sensor de temperatura del refrigerante" },
-        { codigo: "U1000", tipo: "Red / Comunicación", descripcion: "Error genérico de comunicación en red CAN" }
-      ],
-      pids: {
-        rpm: { base: 1200, variacion: 300 },
-        tempRefrigerante: { base: 130, variacion: 10 },
-        velocidad: { base: 0, variacion: 5 },
-        tensionBateria: { base: 11.8, variacion: 0.4 }
-      }
-    },
-    "retrovisor_lin": {
-      nombre: "Fallo retrovisor eléctrico (bus LIN)",
-      protocolo: "CAN + LIN",
-      dtc: [
-        { codigo: "B10A0", tipo: "Carrocería", descripcion: "Fallo en actuador de retrovisor eléctrico (bus LIN)" }
-      ],
-      pids: {
-        rpm: { base: 900, variacion: 150 },
-        tempRefrigerante: { base: 88, variacion: 4 },
-        velocidad: { base: 0, variacion: 5 },
-        tensionBateria: { base: 13.2, variacion: 0.4 }
-      }
-    },
-    "elevalunas_dcho_can": {
-      nombre: "Elevalunas delantero derecho inoperativo",
-      protocolo: "CAN + LIN",
-      dtc: [
-        { codigo: "B1342", tipo: "Carrocería", descripcion: "Fallo en módulo de puerta delantera derecha" },
-        { codigo: "U0155", tipo: "Red / Comunicación", descripcion: "Comunicación perdida con módulo de control de puerta derecha" }
-      ],
-      pids: {
-        rpm: { base: 850, variacion: 100 },
-        tempRefrigerante: { base: 87, variacion: 4 },
-        velocidad: { base: 0, variacion: 3 },
-        tensionBateria: { base: 12.1, variacion: 0.6 }
-      }
-    },
-    "retrovisores_plegado_lin": {
-      nombre: "Retrovisores sin función de plegado",
-      protocolo: "CAN + LIN",
-      dtc: [
-        { codigo: "B10A5", tipo: "Carrocería", descripcion: "Fallo en actuador de plegado de retrovisor izquierdo (LIN)" },
-        { codigo: "B10A6", tipo: "Carrocería", descripcion: "Fallo en actuador de plegado de retrovisor derecho (LIN)" }
-      ],
-      pids: {
-        rpm: { base: 780, variacion: 120 },
-        tempRefrigerante: { base: 84, variacion: 5 },
-        velocidad: { base: 0, variacion: 4 },
-        tensionBateria: { base: 13.5, variacion: 0.3 }
-      }
-    },
-    "correccion_altura_faros": {
-      nombre: "Corrección automática de altura de faros inoperativa",
-      protocolo: "ISO 15765-4 (CAN)",
-      dtc: [
-        { codigo: "B1217", tipo: "Carrocería", descripcion: "Fallo en sensor de altura delantero izquierdo" },
-        { codigo: "B1218", tipo: "Carrocería", descripcion: "Fallo en sensor de altura trasero" },
-        { codigo: "U0126", tipo: "Red / Comunicación", descripcion: "Comunicación perdida con módulo de control de faros" }
-      ],
-      pids: {
-        rpm: { base: 820, variacion: 140 },
-        tempRefrigerante: { base: 89, variacion: 4 },
-        velocidad: { base: 0, variacion: 5 },
-        tensionBateria: { base: 13.6, variacion: 0.4 }
-      }
-    },
-    "cierre_centralizado": {
-      nombre: "Cierre centralizado con actuación parcial",
-      protocolo: "CAN + LIN",
-      dtc: [
-        { codigo: "B1560", tipo: "Carrocería", descripcion: "Fallo en actuador de cerradura puerta trasera izquierda" },
-        { codigo: "B2103", tipo: "Carrocería", descripcion: "Cortocircuito a masa en línea de cierre centralizado" }
-      ],
-      pids: {
-        rpm: { base: 790, variacion: 130 },
-        tempRefrigerante: { base: 86, variacion: 5 },
-        velocidad: { base: 0, variacion: 4 },
-        tensionBateria: { base: 11.9, variacion: 0.7 }
-      }
-    },
-    "pantalla_sin_velocidad": {
-      nombre: "Pantalla multifunción sin datos de velocidad",
-      protocolo: "ISO 15765-4 (CAN)",
-      dtc: [
-        { codigo: "U0101", tipo: "Red / Comunicación", descripcion: "Comunicación perdida con módulo de control de transmisión" },
-        { codigo: "B1445", tipo: "Carrocería", descripcion: "Fallo en señal de velocidad hacia pantalla multifunción" },
-        { codigo: "U0073", tipo: "Red / Comunicación", descripcion: "Bus de comunicación CAN-B desactivado" }
-      ],
-      pids: {
-        rpm: { base: 840, variacion: 160 },
-        tempRefrigerante: { base: 88, variacion: 4 },
-        velocidad: { base: 0, variacion: 8 },
-        tensionBateria: { base: 13.3, variacion: 0.5 }
-      }
-    }
-  };
+const ESCENARIOS = {
+  "normal": { nombre: "Vehículo sin fallos", protocolo: "ISO 15765-4 (CAN)", dtc: [], pids: { rpm:{base:800,variacion:150}, tempRefrigerante:{base:85,variacion:5}, velocidad:{base:0,variacion:5}, tensionBateria:{base:13.8,variacion:0.3} } },
+  
+  "u1000": { nombre: "Error de comunicación CAN", protocolo:"ISO 15765-4 (CAN)", dtc:[{codigo:"U1000", tipo:"Red / Comunicación", descripcion:"Error genérico de comunicación en red CAN"}], pids:{rpm:{base:850,variacion:200},tempRefrigerante:{base:90,variacion:3},velocidad:{base:0,variacion:10},tensionBateria:{base:11.5,variacion:0.5}} },
+  "u1001": { nombre: "CAN alto intermitente", protocolo:"ISO 15765-4 (CAN)", dtc:[{codigo:"U1001",tipo:"Red / Comunicación",descripcion:"Intermitencia en red CAN alta"}], pids:{rpm:{base:900,variacion:220}, tempRefrigerante:{base:88, variacion:4}, velocidad:{base:0, variacion:5}, tensionBateria:{base:12.0, variacion:0.5}} },
+  "u1002": { nombre: "CAN bajo inestable", protocolo:"ISO 15765-4 (CAN)", dtc:[{codigo:"U1002",tipo:"Red / Comunicación",descripcion:"Inestabilidad en red CAN baja"}], pids:{rpm:{base:870,variacion:180}, tempRefrigerante:{base:86, variacion:5}, velocidad:{base:0, variacion:3}, tensionBateria:{base:12.3, variacion:0.4}} },
 
-  // ======= Estado de la simulación =======
-  let conectado = false;
-  let intervaloPIDs = null;
+  "p0115_u1000": { nombre:"Fallo sensor de temp. refrigerante + error CAN", protocolo:"ISO 15765-4 (CAN)", dtc:[{codigo:"P0115",tipo:"Motor",descripcion:"Circuito del sensor de temperatura del refrigerante"},{codigo:"U1000",tipo:"Red / Comunicación",descripcion:"Error genérico de comunicación en red CAN"}], pids:{rpm:{base:1200,variacion:300}, tempRefrigerante:{base:130, variacion:10}, velocidad:{base:0, variacion:5}, tensionBateria:{base:11.8, variacion:0.4}} },
+  "p0116_u1001": { nombre:"Fallo sensor baja + CAN alto", protocolo:"ISO 15765-4 (CAN)", dtc:[{codigo:"P0116",tipo:"Motor",descripcion:"Sensor de temp. refrigerante baja"}], pids:{rpm:{base:1150,variacion:250}, tempRefrigerante:{base:100, variacion:8}, velocidad:{base:0, variacion:5}, tensionBateria:{base:12.1, variacion:0.5}} },
+  "p0117_u1002": { nombre:"Fallo sensor alta + CAN bajo", protocolo:"ISO 15765-4 (CAN)", dtc:[{codigo:"P0117",tipo:"Motor",descripcion:"Sensor de temp. refrigerante alta"}], pids:{rpm:{base:1300,variacion:300}, tempRefrigerante:{base:140, variacion:12}, velocidad:{base:0, variacion:6}, tensionBateria:{base:11.9, variacion:0.4}} },
 
-  const escenarioSelect = document.getElementById("escenario");
-  const btnConectar = document.getElementById("btnConectar");
-  const btnLeerDTC = document.getElementById("btnLeerDTC");
-  const btnBorrarDTC = document.getElementById("btnBorrarDTC");
-  const btnIniciarPIDs = document.getElementById("btnIniciarPIDs");
-  const btnDetenerPIDs = document.getElementById("btnDetenerPIDs");
-  const estadoConexion = document.getElementById("estadoConexion");
-  const tablaDTC = document.getElementById("tablaDTC");
-  const pidsContainer = document.getElementById("pidsContainer");
-  const logDiv = document.getElementById("log");
+  "retrovisor_lin": { nombre:"Fallo retrovisor eléctrico (LIN)", protocolo:"CAN + LIN", dtc:[{codigo:"B10A0",tipo:"Carrocería",descripcion:"Fallo en actuador de retrovisor eléctrico (bus LIN)"}], pids:{rpm:{base:900,variacion:150}, tempRefrigerante:{base:88, variacion:4}, velocidad:{base:0, variacion:5}, tensionBateria:{base:13.2, variacion:0.4}} },
+  "retrovisor_lin2": { nombre:"Retrovisor sin memoria de posición", protocolo:"CAN + LIN", dtc:[{codigo:"B10A1",tipo:"Carrocería",descripcion:"Retrovisor no memoriza posición"}], pids:{rpm:{base:910,variacion:120}, tempRefrigerante:{base:85, variacion:5}, velocidad:{base:0, variacion:4}, tensionBateria:{base:13.1, variacion:0.3}} },
+  "retrovisor_lin3": { nombre:"Retrovisor con plegado bloqueado", protocolo:"CAN + LIN", dtc:[{codigo:"B10A2",tipo:"Carrocería",descripcion:"Plegado de retrovisor bloqueado"}], pids:{rpm:{base:920,variacion:130}, tempRefrigerante:{base:87, variacion:4}, velocidad:{base:0, variacion:5}, tensionBateria:{base:13.0, variacion:0.4}} },
 
-  function log(mensaje) {
-    const linea = document.createElement("div");
-    linea.className = "log-line";
-    const ahora = new Date().toLocaleTimeString();
-    linea.textContent = `[${ahora}] ${mensaje}`;
-    logDiv.prepend(linea);
-  }
+  // ... (sigue mismo patrón para los demás escenarios extra)
+};
 
-  function actualizarEstadoConexion(texto, clase) {
-    estadoConexion.textContent = texto;
-    estadoConexion.className = "estado " + clase;
-  }
+// ======= Estado de la simulación =======
+let conectado = false;
+let intervaloPIDs = null;
 
-  // Simulación de conectar/desconectar
-  btnConectar.addEventListener("click", () => {
-    if (!conectado) {
-      // Simular intento de conexión
-      const escenario = ESCENARIOS[escenarioSelect.value];
-      log(`Intentando conexión OBD-II... Protocolo detectado: ${escenario.protocolo}`);
-      actualizarEstadoConexion("Conectando...", "neutral");
+const escenarioSelect = document.getElementById("escenario");
+const btnConectar = document.getElementById("btnConectar");
+const btnLeerDTC = document.getElementById("btnLeerDTC");
+const btnBorrarDTC = document.getElementById("btnBorrarDTC");
+const btnIniciarPIDs = document.getElementById("btnIniciarPIDs");
+const btnDetenerPIDs = document.getElementById("btnDetenerPIDs");
+const estadoConexion = document.getElementById("estadoConexion");
+const tablaDTC = document.getElementById("tablaDTC");
+const pidsContainer = document.getElementById("pidsContainer");
+const logDiv = document.getElementById("log");
 
-      setTimeout(() => {
-        conectado = true;
-        actualizarEstadoConexion("Conectado", "ok");
-        btnConectar.textContent = "Desconectar";
-        btnLeerDTC.disabled = false;
-        btnBorrarDTC.disabled = false;
-        btnIniciarPIDs.disabled = false;
-        log("Conexión establecida correctamente con la ECU simulada.");
-      }, 700);
-    } else {
-      // Desconectar
-      conectado = false;
-      detenerPIDs();
-      actualizarEstadoConexion("Desconectado", "neutral");
-      btnConectar.textContent = "Conectar";
-      btnLeerDTC.disabled = true;
-      btnBorrarDTC.disabled = true;
-      btnIniciarPIDs.disabled = true;
-      btnDetenerPIDs.disabled = true;
-      tablaDTC.innerHTML = "";
-      log("Conexión OBD-II finalizada.");
-    }
-  });
+function log(mensaje) {
+  const linea = document.createElement("div");
+  linea.className = "log-line";
+  const ahora = new Date().toLocaleTimeString();
+  linea.textContent = `[${ahora}] ${mensaje}`;
+  logDiv.prepend(linea);
+}
 
-  // Leer DTC
-  btnLeerDTC.addEventListener("click", () => {
-    if (!conectado) return;
+function actualizarEstadoConexion(texto, clase) {
+  estadoConexion.textContent = texto;
+  estadoConexion.className = "estado " + clase;
+}
+
+btnConectar.addEventListener("click", () => {
+  if (!conectado) {
     const escenario = ESCENARIOS[escenarioSelect.value];
-    log(`Leyendo códigos de avería (DTC) del escenario: ${escenario.nombre}...`);
-    tablaDTC.innerHTML = "";
+    log(`Intentando conexión OBD-II... Protocolo detectado: ${escenario.protocolo}`);
+    actualizarEstadoConexion("Conectando...", "neutral");
 
-    if (escenario.dtc.length === 0) {
-      const fila = document.createElement("tr");
-      const celda = document.createElement("td");
-      celda.colSpan = 3;
-      celda.textContent = "No se han encontrado códigos de avería almacenados.";
-      fila.appendChild(celda);
-      tablaDTC.appendChild(fila);
-      log("Sin códigos de avería almacenados.");
-    } else {
-      escenario.dtc.forEach(d => {
-        const fila = document.createElement("tr");
-        const c1 = document.createElement("td");
-        const c2 = document.createElement("td");
-        const c3 = document.createElement("td");
-        c1.textContent = d.codigo;
-        c2.textContent = d.tipo;
-        c3.textContent = d.descripcion;
-        fila.appendChild(c1);
-        fila.appendChild(c2);
-        fila.appendChild(c3);
-        tablaDTC.appendChild(fila);
-      });
-      log(`Se han leído ${escenario.dtc.length} código(s) de avería.`);
-    }
-  });
-
-  // Borrar DTC
-  btnBorrarDTC.addEventListener("click", () => {
-    if (!conectado) return;
+    setTimeout(() => {
+      conectado = true;
+      actualizarEstadoConexion("Conectado", "ok");
+      btnConectar.textContent = "Desconectar";
+      btnLeerDTC.disabled = false;
+      btnBorrarDTC.disabled = false;
+      btnIniciarPIDs.disabled = false;
+      log("Conexión establecida correctamente con la ECU simulada.");
+    }, 700);
+  } else {
+    conectado = false;
+    detenerPIDs();
+    actualizarEstadoConexion("Desconectado", "neutral");
+    btnConectar.textContent = "Conectar";
+    btnLeerDTC.disabled = true;
+    btnBorrarDTC.disabled = true;
+    btnIniciarPIDs.disabled = true;
+    btnDetenerPIDs.disabled = true;
     tablaDTC.innerHTML = "";
+    log("Conexión OBD-II finalizada.");
+  }
+});
+
+btnLeerDTC.addEventListener("click", () => {
+  if (!conectado) return;
+  const escenario = ESCENARIOS[escenarioSelect.value];
+  log(`Leyendo códigos de avería (DTC) del escenario: ${escenario.nombre}...`);
+  tablaDTC.innerHTML = "";
+
+  if (escenario.dtc.length === 0) {
     const fila = document.createElement("tr");
     const celda = document.createElement("td");
     celda.colSpan = 3;
     celda.textContent = "No se han encontrado códigos de avería almacenados.";
     fila.appendChild(celda);
     tablaDTC.appendChild(fila);
-    log("Solicitud de borrado de DTC enviada. Memoria de fallos borrada (simulada).");
-  });
-
-  // Datos en tiempo real (PIDs) - inicialización de tarjetas
-  function crearTarjetasPIDs() {
-    pidsContainer.innerHTML = "";
-    const etiquetas = {
-      rpm: "RPM motor",
-      tempRefrigerante: "Temp. refrigerante (°C)",
-      velocidad: "Velocidad (km/h)",
-      tensionBateria: "Tensión batería (V)"
-    };
-    Object.keys(etiquetas).forEach(pid => {
-      const card = document.createElement("div");
-      card.className = "pid-card";
-      card.dataset.pid = pid;
-
-      const label = document.createElement("div");
-      label.className = "pid-label";
-      label.textContent = etiquetas[pid];
-
-      const value = document.createElement("div");
-      value.className = "pid-value";
-      value.textContent = "--";
-
-      card.appendChild(label);
-      card.appendChild(value);
-      pidsContainer.appendChild(card);
+    log("Sin códigos de avería almacenados.");
+  } else {
+    escenario.dtc.forEach(d => {
+      const fila = document.createElement("tr");
+      const c1 = document.createElement("td"); c1.textContent = d.codigo;
+      const c2 = document.createElement("td"); c2.textContent = d.tipo;
+      const c3 = document.createElement("td"); c3.textContent = d.descripcion;
+      fila.appendChild(c1); fila.appendChild(c2); fila.appendChild(c3);
+      tablaDTC.appendChild(fila);
     });
+    log(`Se han leído ${escenario.dtc.length} código(s) de avería.`);
   }
+});
 
-  crearTarjetasPIDs();
-
-  function actualizarPIDs() {
-    if (!conectado) return;
-    const escenario = ESCENARIOS[escenarioSelect.value];
-
-    Object.entries(escenario.pids).forEach(([pid, config]) => {
-      const card = pidsContainer.querySelector(`.pid-card[data-pid="${pid}"]`);
-      if (!card) return;
-      const valueDiv = card.querySelector(".pid-value");
-
-      const delta = (Math.random() - 0.5) * 2 * config.variacion;
-      let valor = config.base + delta;
-
-      // Pequeño ajuste para que no salgan cosas raras (ej: velocidad negativa)
-      if (pid === "velocidad" && valor < 0) valor = 0;
-      if (pid === "tempRefrigerante" && valor < -40) valor = -40;
-
-      if (pid === "tensionBateria") {
-        valueDiv.textContent = valor.toFixed(1);
-      } else {
-        valueDiv.textContent = Math.round(valor);
-      }
-    });
-  }
-
-  function iniciarPIDs() {
-    if (intervaloPIDs) return;
-    actualizarPIDs();
-    intervaloPIDs = setInterval(actualizarPIDs, 1000);
-    btnIniciarPIDs.disabled = true;
-    btnDetenerPIDs.disabled = false;
-    log("Inicio de lectura de datos en tiempo real (PIDs simulados).");
-  }
-
-  function detenerPIDs() {
-    if (intervaloPIDs) {
-      clearInterval(intervaloPIDs);
-      intervaloPIDs = null;
-      btnIniciarPIDs.disabled = !conectado;
-      btnDetenerPIDs.disabled = true;
-      log("Lectura de PIDs detenida.");
-    }
-  }
-
-  btnIniciarPIDs.addEventListener("click", iniciarPIDs);
-  btnDetenerPIDs.addEventListener("click", detenerPIDs);
-
-  // Cambiar de escenario resetea solo los PIDs mostrados (si está parado)
-  escenarioSelect.addEventListener("change", () => {
-    if (!intervaloPIDs) {
-      crearTarjetasPIDs();
-    }
-    log(`Escenario seleccionado: ${ESCENARIOS[escenarioSelect.value].nombre}`);
-  });
-</script>
-</body>
-</html>
+btnBorrarDTC.addEventListener("click", () => {
+  if (!conectado) return;
+  tablaDTC.innerHTML = "";
+  const fila = document.createElement("tr");
+  const celda = document.createElement("td"); celda.colSpan = 3;
+  celda.textContent = "No se han encontrado códigos de avería almacenados.";
+  fila.appendChild(celda); tablaDTC.appendChild(fila);
+  log("Solicitud de borrado de DTC enviada. Memoria de fallos borrada (

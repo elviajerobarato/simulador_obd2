@@ -269,4 +269,61 @@ btnBorrarDTC.addEventListener("click", () => {
   const celda = document.createElement("td"); celda.colSpan = 3;
   celda.textContent = "No se han encontrado códigos de avería almacenados.";
   fila.appendChild(celda); tablaDTC.appendChild(fila);
-  log("Solicitud de borrado de DTC enviada. Memoria de fallos borrada (
+  log("Solicitud de borrado de DTC enviada. Memoria de fallos borrada (simulada).");
+});
+
+function crearTarjetasPIDs() {
+  pidsContainer.innerHTML = "";
+  const etiquetas = { rpm: "RPM motor", tempRefrigerante: "Temp. refrigerante (°C)", velocidad: "Velocidad (km/h)", tensionBateria: "Tensión batería (V)" };
+  Object.keys(etiquetas).forEach(pid => {
+    const card = document.createElement("div"); card.className = "pid-card"; card.dataset.pid = pid;
+    const label = document.createElement("div"); label.className = "pid-label"; label.textContent = etiquetas[pid];
+    const value = document.createElement("div"); value.className = "pid-value"; value.textContent = "--";
+    card.appendChild(label); card.appendChild(value);
+    pidsContainer.appendChild(card);
+  });
+}
+crearTarjetasPIDs();
+
+function actualizarPIDs() {
+  if (!conectado) return;
+  const escenario = ESCENARIOS[escenarioSelect.value];
+  Object.entries(escenario.pids).forEach(([pid, config]) => {
+    const card = pidsContainer.querySelector(`.pid-card[data-pid="${pid}"]`);
+    if (!card) return;
+    const valueDiv = card.querySelector(".pid-value");
+    const delta = (Math.random()-0.5)*2*config.variacion;
+    let valor = config.base + delta;
+    if (pid === "velocidad" && valor<0) valor=0;
+    if (pid === "tempRefrigerante" && valor<-40) valor=-40;
+    valueDiv.textContent = pid==="tensionBateria"?valor.toFixed(1):Math.round(valor);
+  });
+}
+
+function iniciarPIDs() {
+  if (intervaloPIDs) return;
+  actualizarPIDs();
+  intervaloPIDs = setInterval(actualizarPIDs,1000);
+  btnIniciarPIDs.disabled = true;
+  btnDetenerPIDs.disabled = false;
+  log("Inicio de lectura de datos en tiempo real (PIDs simulados).");
+}
+
+function detenerPIDs() {
+  if (intervaloPIDs) { clearInterval(intervaloPIDs); intervaloPIDs=null;
+    btnIniciarPIDs.disabled = !conectado;
+    btnDetenerPIDs.disabled = true;
+    log("Lectura de PIDs detenida.");
+  }
+}
+
+btnIniciarPIDs.addEventListener("click", iniciarPIDs);
+btnDetenerPIDs.addEventListener("click", detenerPIDs);
+
+escenarioSelect.addEventListener("change", () => {
+  if (!intervaloPIDs) crearTarjetasPIDs();
+  log(`Escenario seleccionado: ${ESCENARIOS[escenarioSelect.value].nombre}`);
+});
+</script>
+</body>
+</html>

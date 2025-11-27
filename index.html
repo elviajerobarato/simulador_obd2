@@ -14,7 +14,6 @@
       flex-direction: column;
       min-height: 100vh;
     }
-
     header {
       background: #222;
       padding: 1rem 1.5rem;
@@ -23,17 +22,8 @@
       justify-content: space-between;
       align-items: center;
     }
-
-    header h1 {
-      font-size: 1.3rem;
-      margin: 0;
-    }
-
-    header span {
-      font-size: 0.85rem;
-      opacity: 0.7;
-    }
-
+    header h1 { font-size: 1.3rem; margin: 0; }
+    header span { font-size: 0.85rem; opacity: 0.7; }
     main {
       display: grid;
       grid-template-columns: 1.3fr 1fr;
@@ -41,7 +31,6 @@
       padding: 1rem 1.5rem 1.5rem;
       flex: 1;
     }
-
     .panel {
       background: #1b1b1b;
       border-radius: 8px;
@@ -49,7 +38,6 @@
       border: 1px solid #333;
       box-shadow: 0 0 8px rgba(0,0,0,0.4);
     }
-
     .panel h2 {
       margin-top: 0;
       font-size: 1.1rem;
@@ -57,7 +45,6 @@
       padding-bottom: 0.4rem;
       margin-bottom: 0.7rem;
     }
-
     .fila {
       margin-bottom: 0.7rem;
       display: flex;
@@ -65,7 +52,6 @@
       gap: 0.5rem;
       flex-wrap: wrap;
     }
-
     select, button {
       background: #111;
       color: #eee;
@@ -74,108 +60,24 @@
       padding: 0.35rem 0.5rem;
       font-size: 0.9rem;
     }
-
-    button {
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #333;
-    }
-
-    button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
-    .estado {
-      font-size: 0.9rem;
-      padding: 0.3rem 0.5rem;
-      border-radius: 4px;
-      display: inline-block;
-    }
-
-    .estado.ok {
-      background: #154d27;
-      border: 1px solid #27ae60;
-    }
-
-    .estado.error {
-      background: #5a1a1a;
-      border: 1px solid #e74c3c;
-    }
-
-    .estado.neutral {
-      background: #333;
-      border: 1px solid #777;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.85rem;
-    }
-
-    th, td {
-      border: 1px solid #333;
-      padding: 0.3rem 0.4rem;
-      text-align: left;
-    }
-
-    th {
-      background: #222;
-    }
-
-    tbody tr:nth-child(even) {
-      background: #181818;
-    }
-
-    .pids {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-      gap: 0.5rem;
-    }
-
-    .pid-card {
-      background: #151515;
-      border-radius: 6px;
-      border: 1px solid #333;
-      padding: 0.5rem;
-      font-size: 0.8rem;
-    }
-
-    .pid-label {
-      font-size: 0.75rem;
-      opacity: 0.8;
-    }
-
-    .pid-value {
-      font-size: 1rem;
-      font-weight: bold;
-    }
-
-    footer {
-      font-size: 0.75rem;
-      padding: 0.4rem 1.5rem;
-      background: #111;
-      border-top: 1px solid #333;
-      opacity: 0.8;
-      text-align: right;
-    }
-
-    .log {
-      font-size: 0.8rem;
-      max-height: 150px;
-      overflow-y: auto;
-      background: #111;
-      border-radius: 4px;
-      padding: 0.4rem;
-      border: 1px solid #333;
-    }
-
-    .log-line {
-      margin: 0.15rem 0;
-    }
+    button { cursor: pointer; }
+    button:hover { background: #333; }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    .estado { font-size: 0.9rem; padding: 0.3rem 0.5rem; border-radius: 4px; display: inline-block; }
+    .estado.ok { background: #154d27; border: 1px solid #27ae60; }
+    .estado.error { background: #5a1a1a; border: 1px solid #e74c3c; }
+    .estado.neutral { background: #333; border: 1px solid #777; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    th, td { border: 1px solid #333; padding: 0.3rem 0.4rem; text-align: left; }
+    th { background: #222; }
+    tbody tr:nth-child(even) { background: #181818; }
+    .pids { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 0.5rem; }
+    .pid-card { background: #151515; border-radius: 6px; border: 1px solid #333; padding: 0.5rem; font-size: 0.8rem; }
+    .pid-label { font-size: 0.75rem; opacity: 0.8; }
+    .pid-value { font-size: 1rem; font-weight: bold; }
+    footer { font-size: 0.75rem; padding: 0.4rem 1.5rem; background: #111; border-top: 1px solid #333; opacity: 0.8; text-align: right; }
+    .log { font-size: 0.8rem; max-height: 150px; overflow-y: auto; background: #111; border-radius: 4px; padding: 0.4rem; border: 1px solid #333; }
+    .log-line { margin: 0.15rem 0; }
   </style>
 </head>
 <body>
@@ -201,6 +103,24 @@
         <option value="correccion_altura_faros">Corrección altura de faros inoperativa</option>
         <option value="cierre_centralizado">Cierre centralizado con actuación parcial</option>
         <option value="pantalla_sin_velocidad">Pantalla multifunción sin datos de velocidad</option>
+        <option value="sensor_maf">Sensor MAF defectuoso</option>
+        <option value="sonda_lambda">Sonda lambda averiada</option>
+        <option value="valvula_egr">Válvula EGR bloqueada</option>
+        <option value="sensor_arbol_levas">Sensor árbol de levas sin señal</option>
+        <option value="inyector_cil2">Inyector cilindro 2 con fuga</option>
+        <option value="sensor_turbo">Sensor presión turbo fuera de rango</option>
+        <option value="sensor_pedal">Sensor pedal acelerador incoherente</option>
+        <option value="can_h_cortocircuito">CAN-H cortocircuito a +12V</option>
+        <option value="can_l_masa">CAN-L cortocircuito a masa</option>
+        <option value="resistencia_terminacion">Resistencia terminación CAN defectuosa</option>
+        <option value="can_intermitente">Fallo intermitente bus CAN</option>
+        <option value="can_ambos_cortos">CAN-H y CAN-L cortocircuitados entre sí</option>
+        <option value="airbag_conductor">Airbag conductor sin comunicación</option>
+        <option value="abs_rueda_ti">ABS rueda trasera izquierda defectuoso</option>
+        <option value="esp_desactivado">ESP desactivado por sensor dirección</option>
+        <option value="pretensor_cinturon">Pretensor cinturón con fallo</option>
+        <option value="compresor_ac">Compresor A/C sin señal</option>
+        <option value="sensor_temp_habit">Sensor temperatura habitáculo defectuoso</option>
       </select>
     </div>
 
@@ -217,9 +137,7 @@
     </div>
 
     <h2>Datos en tiempo real (PIDs simulados)</h2>
-    <div class="pids" id="pidsContainer">
-      <!-- Se rellenará por JS -->
-    </div>
+    <div class="pids" id="pidsContainer"></div>
 
     <h2>Registro (log)</h2>
     <div class="log" id="log"></div>
@@ -230,15 +148,13 @@
     <h2>Códigos de avería (DTC)</h2>
     <table>
       <thead>
-      <tr>
-        <th>Código</th>
-        <th>Tipo</th>
-        <th>Descripción</th>
-      </tr>
+        <tr>
+          <th>Código</th>
+          <th>Tipo</th>
+          <th>Descripción</th>
+        </tr>
       </thead>
-      <tbody id="tablaDTC">
-      <!-- Se rellena por JS -->
-      </tbody>
+      <tbody id="tablaDTC"></tbody>
     </table>
   </section>
 </main>
@@ -248,322 +164,563 @@
 </footer>
 
 <script>
-  // ======= Base de datos de escenarios =======
-  const ESCENARIOS = {
-    "normal": {
-      nombre: "Vehículo sin fallos",
-      protocolo: "ISO 15765-4 (CAN)",
-      dtc: [],
-      pids: {
-        rpm: { base: 800, variacion: 150 },
-        tempRefrigerante: { base: 85, variacion: 5 },
-        velocidad: { base: 0, variacion: 5 },
-        tensionBateria: { base: 13.8, variacion: 0.3 }
-      }
-    },
-    "u1000": {
-      nombre: "Error de comunicación CAN",
-      protocolo: "ISO 15765-4 (CAN)",
-      dtc: [
-        { codigo: "U1000", tipo: "Red / Comunicación", descripcion: "Error genérico de comunicación en red CAN" }
-      ],
-      pids: {
-        rpm: { base: 850, variacion: 200 },
-        tempRefrigerante: { base: 90, variacion: 3 },
-        velocidad: { base: 0, variacion: 10 },
-        tensionBateria: { base: 11.5, variacion: 0.5 }
-      }
-    },
-    "p0115_u1000": {
-      nombre: "Fallo sensor de temp. refrigerante + error CAN",
-      protocolo: "ISO 15765-4 (CAN)",
-      dtc: [
-        { codigo: "P0115", tipo: "Motor", descripcion: "Circuito del sensor de temperatura del refrigerante" },
-        { codigo: "U1000", tipo: "Red / Comunicación", descripcion: "Error genérico de comunicación en red CAN" }
-      ],
-      pids: {
-        rpm: { base: 1200, variacion: 300 },
-        tempRefrigerante: { base: 130, variacion: 10 },
-        velocidad: { base: 0, variacion: 5 },
-        tensionBateria: { base: 11.8, variacion: 0.4 }
-      }
-    },
-    "retrovisor_lin": {
-      nombre: "Fallo retrovisor eléctrico (bus LIN)",
-      protocolo: "CAN + LIN",
-      dtc: [
-        { codigo: "B10A0", tipo: "Carrocería", descripcion: "Fallo en actuador de retrovisor eléctrico (bus LIN)" }
-      ],
-      pids: {
-        rpm: { base: 900, variacion: 150 },
-        tempRefrigerante: { base: 88, variacion: 4 },
-        velocidad: { base: 0, variacion: 5 },
-        tensionBateria: { base: 13.2, variacion: 0.4 }
-      }
-    },
-    "elevalunas_dcho_can": {
-      nombre: "Elevalunas delantero derecho inoperativo",
-      protocolo: "CAN + LIN",
-      dtc: [
-        { codigo: "B1342", tipo: "Carrocería", descripcion: "Fallo en módulo de puerta delantera derecha" },
-        { codigo: "U0155", tipo: "Red / Comunicación", descripcion: "Comunicación perdida con módulo de control de puerta derecha" }
-      ],
-      pids: {
-        rpm: { base: 850, variacion: 100 },
-        tempRefrigerante: { base: 87, variacion: 4 },
-        velocidad: { base: 0, variacion: 3 },
-        tensionBateria: { base: 12.1, variacion: 0.6 }
-      }
-    },
-    "retrovisores_plegado_lin": {
-      nombre: "Retrovisores sin función de plegado",
-      protocolo: "CAN + LIN",
-      dtc: [
-        { codigo: "B10A5", tipo: "Carrocería", descripcion: "Fallo en actuador de plegado de retrovisor izquierdo (LIN)" },
-        { codigo: "B10A6", tipo: "Carrocería", descripcion: "Fallo en actuador de plegado de retrovisor derecho (LIN)" }
-      ],
-      pids: {
-        rpm: { base: 780, variacion: 120 },
-        tempRefrigerante: { base: 84, variacion: 5 },
-        velocidad: { base: 0, variacion: 4 },
-        tensionBateria: { base: 13.5, variacion: 0.3 }
-      }
-    },
-    "correccion_altura_faros": {
-      nombre: "Corrección automática de altura de faros inoperativa",
-      protocolo: "ISO 15765-4 (CAN)",
-      dtc: [
-        { codigo: "B1217", tipo: "Carrocería", descripcion: "Fallo en sensor de altura delantero izquierdo" },
-        { codigo: "B1218", tipo: "Carrocería", descripcion: "Fallo en sensor de altura trasero" },
-        { codigo: "U0126", tipo: "Red / Comunicación", descripcion: "Comunicación perdida con módulo de control de faros" }
-      ],
-      pids: {
-        rpm: { base: 820, variacion: 140 },
-        tempRefrigerante: { base: 89, variacion: 4 },
-        velocidad: { base: 0, variacion: 5 },
-        tensionBateria: { base: 13.6, variacion: 0.4 }
-      }
-    },
-    "cierre_centralizado": {
-      nombre: "Cierre centralizado con actuación parcial",
-      protocolo: "CAN + LIN",
-      dtc: [
-        { codigo: "B1560", tipo: "Carrocería", descripcion: "Fallo en actuador de cerradura puerta trasera izquierda" },
-        { codigo: "B2103", tipo: "Carrocería", descripcion: "Cortocircuito a masa en línea de cierre centralizado" }
-      ],
-      pids: {
-        rpm: { base: 790, variacion: 130 },
-        tempRefrigerante: { base: 86, variacion: 5 },
-        velocidad: { base: 0, variacion: 4 },
-        tensionBateria: { base: 11.9, variacion: 0.7 }
-      }
-    },
-    "pantalla_sin_velocidad": {
-      nombre: "Pantalla multifunción sin datos de velocidad",
-      protocolo: "ISO 15765-4 (CAN)",
-      dtc: [
-        { codigo: "U0101", tipo: "Red / Comunicación", descripcion: "Comunicación perdida con módulo de control de transmisión" },
-        { codigo: "B1445", tipo: "Carrocería", descripcion: "Fallo en señal de velocidad hacia pantalla multifunción" },
-        { codigo: "U0073", tipo: "Red / Comunicación", descripcion: "Bus de comunicación CAN-B desactivado" }
-      ],
-      pids: {
-        rpm: { base: 840, variacion: 160 },
-        tempRefrigerante: { base: 88, variacion: 4 },
-        velocidad: { base: 0, variacion: 8 },
-        tensionBateria: { base: 13.3, variacion: 0.5 }
-      }
+// ======= Base de datos de escenarios =======
+const ESCENARIOS = {
+  "normal": {
+    nombre: "Vehículo sin fallos",
+    protocolo: "ISO 15765-4 (CAN)",
+    dtc: [],
+    pids: {
+      rpm: { base: 800, variacion: 150 },
+      tempRefrigerante: { base: 85, variacion: 5 },
+      velocidad: { base: 0, variacion: 5 },
+      tensionBateria: { base: 13.8, variacion: 0.3 }
     }
-  };
-
-  // ======= Estado de la simulación =======
-  let conectado = false;
-  let intervaloPIDs = null;
-
-  const escenarioSelect = document.getElementById("escenario");
-  const btnConectar = document.getElementById("btnConectar");
-  const btnLeerDTC = document.getElementById("btnLeerDTC");
-  const btnBorrarDTC = document.getElementById("btnBorrarDTC");
-  const btnIniciarPIDs = document.getElementById("btnIniciarPIDs");
-  const btnDetenerPIDs = document.getElementById("btnDetenerPIDs");
-  const estadoConexion = document.getElementById("estadoConexion");
-  const tablaDTC = document.getElementById("tablaDTC");
-  const pidsContainer = document.getElementById("pidsContainer");
-  const logDiv = document.getElementById("log");
-
-  function log(mensaje) {
-    const linea = document.createElement("div");
-    linea.className = "log-line";
-    const ahora = new Date().toLocaleTimeString();
-    linea.textContent = `[${ahora}] ${mensaje}`;
-    logDiv.prepend(linea);
-  }
-
-  function actualizarEstadoConexion(texto, clase) {
-    estadoConexion.textContent = texto;
-    estadoConexion.className = "estado " + clase;
-  }
-
-  // Simulación de conectar/desconectar
-  btnConectar.addEventListener("click", () => {
-    if (!conectado) {
-      // Simular intento de conexión
-      const escenario = ESCENARIOS[escenarioSelect.value];
-      log(`Intentando conexión OBD-II... Protocolo detectado: ${escenario.protocolo}`);
-      actualizarEstadoConexion("Conectando...", "neutral");
-
-      setTimeout(() => {
-        conectado = true;
-        actualizarEstadoConexion("Conectado", "ok");
-        btnConectar.textContent = "Desconectar";
-        btnLeerDTC.disabled = false;
-        btnBorrarDTC.disabled = false;
-        btnIniciarPIDs.disabled = false;
-        log("Conexión establecida correctamente con la ECU simulada.");
-      }, 700);
-    } else {
-      // Desconectar
-      conectado = false;
-      detenerPIDs();
-      actualizarEstadoConexion("Desconectado", "neutral");
-      btnConectar.textContent = "Conectar";
-      btnLeerDTC.disabled = true;
-      btnBorrarDTC.disabled = true;
-      btnIniciarPIDs.disabled = true;
-      btnDetenerPIDs.disabled = true;
-      tablaDTC.innerHTML = "";
-      log("Conexión OBD-II finalizada.");
+  },
+  "u1000": {
+    nombre: "Error de comunicación CAN",
+    protocolo: "ISO 15765-4 (CAN)",
+    dtc: [
+      { codigo: "U1000", tipo: "Red / Comunicación", descripcion: "Error genérico de comunicación en red CAN" }
+    ],
+    pids: {
+      rpm: { base: 850, variacion: 200 },
+      tempRefrigerante: { base: 90, variacion: 3 },
+      velocidad: { base: 0, variacion: 10 },
+      tensionBateria: { base: 11.5, variacion: 0.5 }
     }
-  });
+  },
+  "p0115_u1000": {
+    nombre: "Fallo sensor de temp. refrigerante + error CAN",
+    protocolo: "ISO 15765-4 (CAN)",
+    dtc: [
+      { codigo: "P0115", tipo: "Motor", descripcion: "Circuito del sensor de temperatura del refrigerante" },
+      { codigo: "U1000", tipo: "Red / Comunicación", descripcion: "Error genérico de comunicación en red CAN" }
+    ],
+    pids: {
+      rpm: { base: 1200, variacion: 300 },
+      tempRefrigerante: { base: 130, variacion: 10 },
+      velocidad: { base: 0, variacion: 5 },
+      tensionBateria: { base: 11.8, variacion: 0.4 }
+    }
+  },
+  "retrovisor_lin": {
+    nombre: "Fallo retrovisor eléctrico (bus LIN)",
+    protocolo: "CAN + LIN",
+    dtc: [
+      { codigo: "B10A0", tipo: "Carrocería", descripcion: "Fallo en actuador de retrovisor eléctrico (bus LIN)" }
+    ],
+    pids: {
+      rpm: { base: 900, variacion: 150 },
+      tempRefrigerante: { base: 88, variacion: 4 },
+      velocidad: { base: 0, variacion: 5 },
+      tensionBateria: { base: 13.2, variacion: 0.4 }
+    }
+  },
+  "elevalunas_dcho_can": {
+    nombre: "Elevalunas delantero derecho inoperativo",
+    protocolo: "CAN + LIN",
+    dtc: [
+      { codigo: "B1342", tipo: "Carrocería", descripcion: "Fallo en módulo de puerta delantera derecha" },
+      { codigo: "U0155", tipo: "Red / Comunicación", descripcion: "Comunicación perdida con módulo de control de puerta derecha" }
+    ],
+    pids: {
+      rpm: { base: 850, variacion: 100 },
+      tempRefrigerante: { base: 87, variacion: 4 },
+      velocidad: { base: 0, variacion: 3 },
+      tensionBateria: { base: 12.1, variacion: 0.6 }
+    }
+  },
+  "retrovisores_plegado_lin": {
+    nombre: "Retrovisores sin función de plegado",
+    protocolo: "CAN + LIN",
+    dtc: [
+      { codigo: "B10A5", tipo: "Carrocería", descripcion: "Fallo en actuador de plegado de retrovisor izquierdo (LIN)" },
+      { codigo: "B10A6", tipo: "Carrocería", descripcion: "Fallo en actuador de plegado de retrovisor derecho (LIN)" }
+    ],
+    pids: {
+      rpm: { base: 780, variacion: 120 },
+      tempRefrigerante: { base: 84, variacion: 5 },
+      velocidad: { base: 0, variacion: 4 },
+      tensionBateria: { base: 13.5, variacion: 0.3 }
+    }
+  },
+  "correccion_altura_faros": {
+    nombre: "Corrección automática de altura de faros inoperativa",
+    protocolo: "ISO 15765-4 (CAN)",
+    dtc: [
+      { codigo: "B1217", tipo: "Carrocería", descripcion: "Fallo en sensor de altura delantero izquierdo" },
+      { codigo: "B1218", tipo: "Carrocería", descripcion: "Fallo en sensor de altura trasero" },
+      { codigo: "U0126", tipo: "Red / Comunicación", descripcion: "Comunicación perdida con módulo de control de faros" }
+    ],
+    pids: {
+      rpm: { base: 820, variacion: 140 },
+      tempRefrigerante: { base: 89, variacion: 4 },
+      velocidad: { base: 0, variacion: 5 },
+      tensionBateria: { base: 13.6, variacion: 0.4 }
+    }
+  },
+  "cierre_centralizado": {
+    nombre: "Cierre centralizado con actuación parcial",
+    protocolo: "CAN + LIN",
+    dtc: [
+      { codigo: "B1560", tipo: "Carrocería", descripcion: "Fallo en actuador de cerradura puerta trasera izquierda" },
+      { codigo: "B2103", tipo: "Carrocería", descripcion: "Cortocircuito a masa en línea de cierre centralizado" }
+    ],
+    pids: {
+      rpm: { base: 790, variacion: 130 },
+      tempRefrigerante: { base: 86, variacion: 5 },
+      velocidad: { base: 0, variacion: 4 },
+      tensionBateria: { base: 11.9, variacion: 0.7 }
+    }
+  },
+  "pantalla_sin_velocidad": {
+    nombre: "Pantalla multifunción sin datos de velocidad",
+    protocolo: "ISO 15765-4 (CAN)",
+    dtc: [
+      { codigo: "U0101", tipo: "Red / Comunicación", descripcion: "Comunicación perdida con módulo de control de transmisión" },
+      { codigo: "B1445", tipo: "Carrocería", descripcion: "Fallo en señal de velocidad hacia pantalla multifunción" },
+      { codigo: "U0073", tipo: "Red / Comunicación", descripcion: "Bus de comunicación CAN-B desactivado" }
+    ],
+    pids: {
+      rpm: { base: 840, variacion: 160 },
+      tempRefrigerante: { base: 88, variacion: 4 },
+      velocidad: { base: 0, variacion: 8 },
+      tensionBateria: { base: 13.3, variacion: 0.5 }
+    }
+  },
+  "sensor_maf": {
+    nombre: "Sensor MAF (medidor flujo aire) defectuoso",
+    protocolo: "ISO 15765-4 (CAN)",
+    dtc: [
+      { codigo: "P0101", tipo: "Motor", descripcion: "Rango/rendimiento del circuito sensor MAF" },
+      { codigo: "P0171", tipo: "Motor", descripcion: "Sistema demasiado pobre (Banco 1)" }
+    ],
+    pids: {
+      rpm: { base: 950, variacion: 250 },
+      tempRefrigerante: { base: 88, variacion: 5 },
+      velocidad: { base: 0, variacion: 4 },
+      tensionBateria: { base: 13.6, variacion: 0.4 }
+    }
+  },
+  "sonda_lambda": {
+    nombre: "Sonda lambda banco 1 sensor 1 averiada",
+    protocolo: "ISO 15765-4 (CAN)",
+    dtc: [
+      { codigo: "P0130", tipo: "Motor", descripcion: "Mal funcionamiento circuito sensor O2 (Banco 1, Sensor 1)" },
+      { codigo: "P0172", tipo: "Motor", descripcion: "Sistema demasiado rico (Banco 1)" }
+    ],
+    pids: {
+      rpm: { base: 880, variacion: 180 },
+      tempRefrigerante: { base: 92, variacion: 6 },
+      velocidad: { base: 0, variacion: 5 },
+      tensionBateria: { base: 13.4, variacion: 0.3 }
+    }
+  },
+  "valvula_egr": {
+    nombre: "Válvula EGR bloqueada o con fallo",
+    protocolo: "ISO 15765-4 (CAN)",
+    dtc: [
+      { codigo: "P0401", tipo: "Motor", descripcion: "Flujo de recirculación de gases de escape insuficiente detectado" },
+      { codigo: "P0404", tipo: "Motor", descripcion: "Rango/rendimiento del circuito de recirculación de gases de escape" }
+    ],
+    pids: {
+      rpm: { base: 820, variacion: 170 },
+      tempRefrigerante: { base: 95, variacion: 7 },
+      velocidad: { base: 0, variacion: 4 },
+      tensionBateria: { base: 13.7, variacion: 0.3 }
+    }
+  },
+  "sensor_arbol_levas": {
+    nombre: "Sensor posición árbol de levas sin señal",
+    protocolo: "ISO 15765-4 (CAN)",
+    dtc: [
+      { codigo: "P0340", tipo: "Motor", descripcion: "Mal funcionamiento circuito sensor posición árbol de levas" },
+      { codigo: "P0016", tipo: "Motor", descripcion: "Correlación posición cigüeñal/árbol de levas (Banco 1, Sensor A)" }
+    ],
+    pids: {
+      rpm: { base: 1100, variacion: 350 },
+      tempRefrigerante: { base: 87, variacion: 5 },
+      velocidad: { base: 0, variacion: 6 },
+      tensionBateria: { base: 13.5, variacion: 0.4 }
+    }
+  },
+  "inyector_cil2": {
+    nombre: "Inyector cilindro 2 con fuga o atascado",
+    protocolo: "ISO 15765-4 (CAN)",
+    dtc: [
+      { codigo: "P0202", tipo: "Motor", descripcion: "Mal funcionamiento circuito inyector cilindro 2" },
+      { codigo: "P0302", tipo: "Motor", descripcion: "Fallo de encendido detectado cilindro 2" }
+    ],
+    pids: {
+      rpm: { base: 750, variacion: 280 },
+      tempRefrigerante: { base: 90, variacion: 6 },
+      velocidad: { base: 0, variacion: 5 },
+      tensionBateria: { base: 13.4, variacion: 0.5 }
+    }
+  },
+  "sensor_turbo": {
+    nombre: "Sensor presión turbo fuera de rango",
+    protocolo: "ISO 15765-4 (CAN)",
+    dtc: [
+      { codigo: "P0236", tipo: "Motor", descripcion: "Rango/rendimiento circuito sensor presión sobrealimentación turbo" },
+      { codigo: "P0299", tipo: "Motor", descripcion: "Condición de bajo rendimiento turbo/sobrealimentador" }
+    ],
+    pids: {
+      rpm: { base: 900, variacion: 220 },
+      tempRefrigerante: { base: 91, variacion: 5 },
+      velocidad: { base: 0, variacion: 4 },
+      tensionBateria: { base: 13.6, variacion: 0.3 }
+    }
+  },
+  "sensor_pedal": {
+    nombre: "Sensor posición pedal acelerador incoherente",
+    protocolo: "ISO 15765-4 (CAN)",
+    dtc: [
+      { codigo: "P2122", tipo: "Motor", descripcion: "Circuito sensor posición pedal acelerador D entrada baja" },
+      { codigo: "P2138", tipo: "Motor", descripcion: "Correlación voltaje sensores posición pedal acelerador D/E" }
+    ],
+    pids: {
+      rpm: { base: 1050, variacion: 300 },
+      tempRefrigerante: { base: 86, variacion: 5 },
+      velocidad: { base: 0, variacion: 7 },
+      tensionBateria: { base: 13.3, variacion: 0.4 }
+    }
+  },
+  "can_h_cortocircuito": {
+    nombre: "CAN-H cortocircuito a +12V",
+    protocolo: "ISO 15765-4 (CAN)",
+    dtc: [
+      { codigo: "U0100", tipo: "Red / Comunicación", descripcion: "Comunicación perdida con ECM/PCM" },
+      { codigo: "U0121", tipo: "Red / Comunicación", descripcion: "Comunicación perdida con módulo de control ABS" },
+      { codigo: "U1001", tipo: "Red / Comunicación", descripcion: "Bus CAN-H cortocircuito a tensión" }
+    ],
+    pids: {
+      rpm: { base: 0, variacion: 0 },
+      tempRefrigerante: { base: 0, variacion: 0 },
+      velocidad: { base: 0, variacion: 0 },
+      tensionBateria: { base: 10.8, variacion: 0.8 }
+    }
+  },
+  "can_l_masa": {
+    nombre: "CAN-L cortocircuito a masa",
+    protocolo: "ISO 15765-4 (CAN)",
+    dtc: [
+      { codigo: "U0073", tipo: "Red / Comunicación", descripcion: "Bus de comunicación desactivado" },
+      { codigo: "U0140", tipo: "Red / Comunicación", descripcion: "Comunicación perdida con módulo control carrocería" },
+      { codigo: "U1002", tipo: "Red / Comunicación", descripcion: "Bus CAN-L cortocircuito a masa" }
+    ],
+    pids: {
+      rpm: { base: 850, variacion: 250 },
+      tempRefrigerante: { base: 89, variacion: 3 },
+      velocidad: { base: 0, variacion: 12 },
+      tensionBateria: { base: 11.2, variacion: 0.6 }
+    }
+  },
+  "resistencia_terminacion": {
+    nombre: "Resistencia terminación CAN ausente o defectuosa",
+    protocolo: "ISO 15765-4 (CAN)",
+    dtc: [
+      { codigo: "U1003", tipo: "Red / Comunicación", descripcion: "Resistencia terminación bus CAN incorrecta" },
+      { codigo: "U0151", tipo: "Red / Comunicación", descripcion: "Comunicación perdida con módulo airbag" }
+    ],
+    pids: {
+      rpm: { base: 880, variacion: 280 },
+      tempRefrigerante: { base: 87, variacion: 4 },
+      velocidad: { base: 0, variacion: 15 },
+      tensionBateria: { base: 12.8, variacion: 0.5 }
+    }
+  },
+  "can_intermitente": {
+    nombre: "Fallo intermitente bus CAN (conexión suelta)",
+    protocolo: "ISO 15765-4 (CAN)",
+    dtc: [
+      { codigo: "U0001", tipo: "Red / Comunicación", descripcion: "Bus CAN de alta velocidad" },
+      { codigo: "U0164", tipo: "Red / Comunicación", descripcion: "Comunicación perdida con módulo control climatización" },
+      { codigo: "U0415", tipo: "Red / Comunicación", descripcion: "Dato inválido recibido desde módulo ECM" }
+    ],
+    pids: {
+      rpm: { base: 820, variacion: 320 },
+      tempRefrigerante: { base: 88, variacion: 8 },
+      velocidad: { base: 0, variacion: 18 },
+      tensionBateria: { base: 13.1, variacion: 0.7 }
+    }
+  },
+  "can_ambos_cortos": {
+    nombre: "CAN-H y CAN-L cortocircuitados entre sí",
+    protocolo: "ISO 15765-4 (CAN)",
+    dtc: [
+      { codigo: "U0074", tipo: "Red / Comunicación", descripcion: "Bus de comunicación cortocircuito" },
+      { codigo: "U1004", tipo: "Red / Comunicación", descripcion: "Cortocircuito entre CAN-H y CAN-L detectado" }
+    ],
+    pids: {
+      rpm: { base: 0, variacion: 0 },
+      tempRefrigerante: { base: 0, variacion: 0 },
+      velocidad: { base: 0, variacion: 0 },
+      tensionBateria: { base: 12.5, variacion: 0.4 }
+    }
+  },
+  "airbag_conductor": {
+    nombre: "Airbag conductor sin comunicación",
+    protocolo: "ISO 15765-4 (CAN)",
+    dtc: [
+      { codigo: "B0081", tipo: "Seguridad", descripcion: "Circuito abierto airbag lado conductor etapa 1" },
+      { codigo: "U0151", tipo: "Red / Comunicación", descripcion: "Comunicación perdida con módulo airbag" }
+    ],
+    pids: {
+      rpm: { base: 810, variacion: 140 },
+      tempRefrigerante: { base: 86, variacion: 4 },
+      velocidad: { base: 0, variacion: 4 },
+      tensionBateria: { base: 13.4, variacion: 0.3 }
+    }
+  },
+  "abs_rueda_ti": {
+    nombre: "ABS sensor rueda trasera izquierda defectuoso",
+    protocolo: "ISO 15765-4 (CAN)",
+    dtc: [
+      { codigo: "C0035", tipo: "Chasis", descripcion: "Sensor velocidad rueda trasera izquierda mal funcionamiento" },
+      { codigo: "C0221", tipo: "Chasis", descripcion: "Señal sensor velocidad rueda trasera izquierda errática" }
+    ],
+    pids: {
+      rpm: { base: 830, variacion: 150 },
+      tempRefrigerante: { base: 88, variacion: 5 },
+      velocidad: { base: 0, variacion: 5 },
+      tensionBateria: { base: 13.5, variacion: 0.3 }
+    }
+  },
+  "esp_desactivado": {
+    nombre: "ESP desactivado por fallo sensor ángulo dirección",
+    protocolo: "ISO 15765-4 (CAN)",
+    dtc: [
+      { codigo: "C0710", tipo: "Chasis", descripcion: "Sensor ángulo de dirección mal funcionamiento" },
+      { codigo: "C1234", tipo: "Chasis", descripcion: "Sistema ESP deshabilitado" },
+      { codigo: "U0126", tipo: "Red / Comunicación", descripcion: "Comunicación perdida con módulo dirección asistida" }
+    ],
+    pids: {
+      rpm: { base: 840, variacion: 160 },
+      tempRefrigerante: { base: 87, variacion: 4 },
+      velocidad: { base: 0, variacion: 4 },
+      tensionBateria: { base: 13.6, variacion: 0.3 }
+    }
+  },
+  "pretensor_cinturon": {
+    nombre: "Pretensor cinturón seguridad con fallo circuito",
+    protocolo: "ISO 15765-4 (CAN)",
+    dtc: [
+      { codigo: "B0042", tipo: "Seguridad", descripcion: "Resistencia alta circuito pretensor cinturón conductor" },
+      { codigo: "B1317", tipo: "Seguridad", descripcion: "Cortocircuito a masa pretensor cinturón lado conductor" }
+    ],
+    pids: {
+      rpm: { base: 790, variacion: 130 },
+      tempRefrigerante: { base: 85, variacion: 5 },
+      velocidad: { base: 0, variacion: 3 },
+      tensionBateria: { base: 13.3, variacion: 0.4 }
+    }
+  },
+  "compresor_ac": {
+    nombre: "Compresor aire acondicionado sin señal activación",
+    protocolo: "ISO 15765-4 (CAN)",
+    dtc: [
+      { codigo: "B1479", tipo: "Carrocería", descripcion: "Circuito relé embrague compresor A/C abierto" },
+      { codigo: "P0645", tipo: "Motor", descripcion: "Mal funcionamiento circuito relé embrague compresor A/C" },
+      { codigo: "U0164", tipo: "Red / Comunicación", descripcion: "Comunicación perdida con módulo climatización" }
+    ],
+    pids: {
+      rpm: { base: 850, variacion: 150 },
+      tempRefrigerante: { base: 89, variacion: 5 },
+      velocidad: { base: 0, variacion: 4 },
+      tensionBateria: { base: 13.2, variacion: 0.4 }
+    }
+  },
+  "sensor_temp_habit": {
+    nombre: "Sensor temperatura habitáculo defectuoso",
+    protocolo: "ISO 15765-4 (CAN)",
+    dtc: [
+      { codigo: "B1416", tipo: "Carrocería", descripcion: "Circuito sensor temperatura habitáculo fuera de rango" },
+      { codigo: "B1418", tipo: "Carrocería", descripcion: "Cortocircuito a masa sensor temperatura habitáculo" }
+    ],
+    pids: {
+      rpm: { base: 800, variacion: 140 },
+      tempRefrigerante: { base: 86, variacion: 4 },
+      velocidad: { base: 0, variacion: 3 },
+      tensionBateria: { base: 13.7, variacion: 0.3 }
+    }
+  }
+};
 
-  // Leer DTC
-  btnLeerDTC.addEventListener("click", () => {
-    if (!conectado) return;
+// ======= Estado de la simulación =======
+let conectado = false;
+let intervaloPIDs = null;
+
+const escenarioSelect = document.getElementById("escenario");
+const btnConectar = document.getElementById("btnConectar");
+const btnLeerDTC = document.getElementById("btnLeerDTC");
+const btnBorrarDTC = document.getElementById("btnBorrarDTC");
+const btnIniciarPIDs = document.getElementById("btnIniciarPIDs");
+const btnDetenerPIDs = document.getElementById("btnDetenerPIDs");
+const estadoConexion = document.getElementById("estadoConexion");
+const tablaDTC = document.getElementById("tablaDTC");
+const pidsContainer = document.getElementById("pidsContainer");
+const logDiv = document.getElementById("log");
+
+function log(mensaje) {
+  const linea = document.createElement("div");
+  linea.className = "log-line";
+  const ahora = new Date().toLocaleTimeString();
+  linea.textContent = `[${ahora}] ${mensaje}`;
+  logDiv.prepend(linea);
+}
+
+function actualizarEstadoConexion(texto, clase) {
+  estadoConexion.textContent = texto;
+  estadoConexion.className = "estado " + clase;
+}
+
+btnConectar.addEventListener("click", () => {
+  if (!conectado) {
     const escenario = ESCENARIOS[escenarioSelect.value];
-    log(`Leyendo códigos de avería (DTC) del escenario: ${escenario.nombre}...`);
-    tablaDTC.innerHTML = "";
+    log(`Intentando conexión OBD-II... Protocolo detectado: ${escenario.protocolo}`);
+    actualizarEstadoConexion("Conectando...", "neutral");
 
-    if (escenario.dtc.length === 0) {
-      const fila = document.createElement("tr");
-      const celda = document.createElement("td");
-      celda.colSpan = 3;
-      celda.textContent = "No se han encontrado códigos de avería almacenados.";
-      fila.appendChild(celda);
-      tablaDTC.appendChild(fila);
-      log("Sin códigos de avería almacenados.");
-    } else {
-      escenario.dtc.forEach(d => {
-        const fila = document.createElement("tr");
-        const c1 = document.createElement("td");
-        const c2 = document.createElement("td");
-        const c3 = document.createElement("td");
-        c1.textContent = d.codigo;
-        c2.textContent = d.tipo;
-        c3.textContent = d.descripcion;
-        fila.appendChild(c1);
-        fila.appendChild(c2);
-        fila.appendChild(c3);
-        tablaDTC.appendChild(fila);
-      });
-      log(`Se han leído ${escenario.dtc.length} código(s) de avería.`);
-    }
-  });
-
-  // Borrar DTC
-  btnBorrarDTC.addEventListener("click", () => {
-    if (!conectado) return;
+    setTimeout(() => {
+      conectado = true;
+      actualizarEstadoConexion("Conectado", "ok");
+      btnConectar.textContent = "Desconectar";
+      btnLeerDTC.disabled = false;
+      btnBorrarDTC.disabled = false;
+      btnIniciarPIDs.disabled = false;
+      log("Conexión establecida correctamente con la ECU simulada.");
+    }, 700);
+  } else {
+    conectado = false;
+    detenerPIDs();
+    actualizarEstadoConexion("Desconectado", "neutral");
+    btnConectar.textContent = "Conectar";
+    btnLeerDTC.disabled = true;
+    btnBorrarDTC.disabled = true;
+    btnIniciarPIDs.disabled = true;
+    btnDetenerPIDs.disabled = true;
     tablaDTC.innerHTML = "";
+    log("Conexión OBD-II finalizada.");
+  }
+});
+
+btnLeerDTC.addEventListener("click", () => {
+  if (!conectado) return;
+  const escenario = ESCENARIOS[escenarioSelect.value];
+  log(`Leyendo códigos de avería (DTC) del escenario: ${escenario.nombre}...`);
+  tablaDTC.innerHTML = "";
+
+  if (escenario.dtc.length === 0) {
     const fila = document.createElement("tr");
     const celda = document.createElement("td");
     celda.colSpan = 3;
     celda.textContent = "No se han encontrado códigos de avería almacenados.";
     fila.appendChild(celda);
     tablaDTC.appendChild(fila);
-    log("Solicitud de borrado de DTC enviada. Memoria de fallos borrada (simulada).");
-  });
-
-  // Datos en tiempo real (PIDs) - inicialización de tarjetas
-  function crearTarjetasPIDs() {
-    pidsContainer.innerHTML = "";
-    const etiquetas = {
-      rpm: "RPM motor",
-      tempRefrigerante: "Temp. refrigerante (°C)",
-      velocidad: "Velocidad (km/h)",
-      tensionBateria: "Tensión batería (V)"
-    };
-    Object.keys(etiquetas).forEach(pid => {
-      const card = document.createElement("div");
-      card.className = "pid-card";
-      card.dataset.pid = pid;
-
-      const label = document.createElement("div");
-      label.className = "pid-label";
-      label.textContent = etiquetas[pid];
-
-      const value = document.createElement("div");
-      value.className = "pid-value";
-      value.textContent = "--";
-
-      card.appendChild(label);
-      card.appendChild(value);
-      pidsContainer.appendChild(card);
+    log("Sin códigos de avería almacenados.");
+  } else {
+    escenario.dtc.forEach(d => {
+      const fila = document.createElement("tr");
+      const c1 = document.createElement("td");
+      const c2 = document.createElement("td");
+      const c3 = document.createElement("td");
+      c1.textContent = d.codigo;
+      c2.textContent = d.tipo;
+      c3.textContent = d.descripcion;
+      fila.appendChild(c1);
+      fila.appendChild(c2);
+      fila.appendChild(c3);
+      tablaDTC.appendChild(fila);
     });
+    log(`Se han leído ${escenario.dtc.length} código(s) de avería.`);
   }
+});
 
-  crearTarjetasPIDs();
+btnBorrarDTC.addEventListener("click", () => {
+  if (!conectado) return;
+  tablaDTC.innerHTML = "";
+  const fila = document.createElement("tr");
+  const celda = document.createElement("td");
+  celda.colSpan = 3;
+  celda.textContent = "No se han encontrado códigos de avería almacenados.";
+  fila.appendChild(celda);
+  tablaDTC.appendChild(fila);
+  log("Solicitud de borrado de DTC enviada. Memoria de fallos borrada (simulada).");
+});
 
-  function actualizarPIDs() {
-    if (!conectado) return;
-    const escenario = ESCENARIOS[escenarioSelect.value];
-
-    Object.entries(escenario.pids).forEach(([pid, config]) => {
-      const card = pidsContainer.querySelector(`.pid-card[data-pid="${pid}"]`);
-      if (!card) return;
-      const valueDiv = card.querySelector(".pid-value");
-
-      const delta = (Math.random() - 0.5) * 2 * config.variacion;
-      let valor = config.base + delta;
-
-      // Pequeño ajuste para que no salgan cosas raras (ej: velocidad negativa)
-      if (pid === "velocidad" && valor < 0) valor = 0;
-      if (pid === "tempRefrigerante" && valor < -40) valor = -40;
-
-      if (pid === "tensionBateria") {
-        valueDiv.textContent = valor.toFixed(1);
-      } else {
-        valueDiv.textContent = Math.round(valor);
-      }
-    });
-  }
-
-  function iniciarPIDs() {
-    if (intervaloPIDs) return;
-    actualizarPIDs();
-    intervaloPIDs = setInterval(actualizarPIDs, 1000);
-    btnIniciarPIDs.disabled = true;
-    btnDetenerPIDs.disabled = false;
-    log("Inicio de lectura de datos en tiempo real (PIDs simulados).");
-  }
-
-  function detenerPIDs() {
-    if (intervaloPIDs) {
-      clearInterval(intervaloPIDs);
-      intervaloPIDs = null;
-      btnIniciarPIDs.disabled = !conectado;
-      btnDetenerPIDs.disabled = true;
-      log("Lectura de PIDs detenida.");
-    }
-  }
-
-  btnIniciarPIDs.addEventListener("click", iniciarPIDs);
-  btnDetenerPIDs.addEventListener("click", detenerPIDs);
-
-  // Cambiar de escenario resetea solo los PIDs mostrados (si está parado)
-  escenarioSelect.addEventListener("change", () => {
-    if (!intervaloPIDs) {
-      crearTarjetasPIDs();
-    }
-    log(`Escenario seleccionado: ${ESCENARIOS[escenarioSelect.value].nombre}`);
+function crearTarjetasPIDs() {
+  pidsContainer.innerHTML = "";
+  const etiquetas = {
+    rpm: "RPM motor",
+    tempRefrigerante: "Temp. refrigerante (°C)",
+    velocidad: "Velocidad (km/h)",
+    tensionBateria: "Tensión batería (V)"
+  };
+  Object.keys(etiquetas).forEach(pid => {
+    const card = document.createElement("div");
+    card.className = "pid-card";
+    card.dataset.pid = pid;
+    const label = document.createElement("div");
+    label.className = "pid-label";
+    label.textContent = etiquetas[pid];
+    const value = document.createElement("div");
+    value.className = "pid-value";
+    value.textContent = "--";
+    card.appendChild(label);
+    card.appendChild(value);
+    pidsContainer.appendChild(card);
   });
+}
+crearTarjetasPIDs();
+
+function actualizarPIDs() {
+  if (!conectado) return;
+  const escenario = ESCENARIOS[escenarioSelect.value];
+  Object.entries(escenario.pids).forEach(([pid, config]) => {
+    const card = pidsContainer.querySelector(`.pid-card[data-pid="${pid}"]`);
+    if (!card) return;
+    const valueDiv = card.querySelector(".pid-value");
+    const delta = (Math.random() - 0.5) * 2 * config.variacion;
+    let valor = config.base + delta;
+    if (pid === "velocidad" && valor < 0) valor = 0;
+    if (pid === "tempRefrigerante" && valor < -40) valor = -40;
+    if (pid === "tensionBateria") {
+      valueDiv.textContent = valor.toFixed(1);
+    } else {
+      valueDiv.textContent = Math.round(valor);
+    }
+  });
+}
+
+function iniciarPIDs() {
+  if (intervaloPIDs) return;
+  actualizarPIDs();
+  intervaloPIDs = setInterval(actualizarPIDs, 1000);
+  btnIniciarPIDs.disabled = true;
+  btnDetenerPIDs.disabled = false;
+  log("Inicio de lectura de datos en tiempo real (PIDs simulados).");
+}
+
+function detenerPIDs() {
+  if (intervaloPIDs) {
+    clearInterval(intervaloPIDs);
+    intervaloPIDs = null;
+    btnIniciarPIDs.disabled = !conectado;
+    btnDetenerPIDs.disabled = true;
+    log("Lectura de PIDs detenida.");
+  }
+}
+
+btnIniciarPIDs.addEventListener("click", iniciarPIDs);
+btnDetenerPIDs.addEventListener("click", detenerPIDs);
+
+escenarioSelect.addEventListener("change", () => {
+  if (!intervaloPIDs) {
+    crearTarjetasPIDs();
+  }
+  log(`Escenario seleccionado: ${ESCENARIOS[escenarioSelect.value].nombre}`);
+});
 </script>
 </body>
 </html>

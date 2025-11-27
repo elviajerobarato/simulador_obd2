@@ -74,7 +74,7 @@
       flex-wrap: wrap;
     }
 
-    select, button {
+    button {
       background: #111;
       color: #eee;
       border-radius: 4px;
@@ -82,13 +82,6 @@
       padding: 0.35rem 0.5rem;
       font-size: 0.9rem;
       max-width: 100%;
-    }
-
-    select {
-      flex: 1 1 220px;
-    }
-
-    button {
       cursor: pointer;
       white-space: nowrap;
     }
@@ -243,7 +236,7 @@
 <body>
 <header>
   <h1>Simulador OBD-II</h1>
-  <span>Modo práctica | No conecta a un vehículo real</span>
+  <span>Modo práctica | Escenario aleatorio | No conecta a un vehículo real</span>
 </header>
 
 <main>
@@ -251,42 +244,7 @@
   <section class="panel">
     <h2>Panel de control</h2>
 
-    <div class="fila">
-      <label for="escenario">Escenario de fallo:</label>
-      <select id="escenario">
-        <option value="normal">Vehículo sin fallos</option>
-        <option value="u1000">U1000 - Fallo comunicación CAN</option>
-        <option value="p0115_u1000">P0115 + U1000 - Temp refrigerante + CAN</option>
-        <option value="retrovisor_lin">Fallo retrovisor eléctrico (LIN)</option>
-        <option value="elevalunas_dcho_can">Elevalunas delantero derecho inoperativo</option>
-        <option value="retrovisores_plegado_lin">Retrovisores sin función de plegado</option>
-        <option value="correccion_altura_faros">Corrección altura de faros inoperativa</option>
-        <option value="cierre_centralizado">Cierre centralizado con actuación parcial</option>
-        <option value="pantalla_sin_velocidad">Pantalla multifunción sin datos de velocidad</option>
-        <option value="sensor_maf">Sensor MAF defectuoso</option>
-        <option value="sonda_lambda">Sonda lambda averiada</option>
-        <option value="valvula_egr">Válvula EGR bloqueada</option>
-        <option value="sensor_arbol_levas">Sensor árbol de levas sin señal</option>
-        <option value="inyector_cil2">Inyector cilindro 2 con fuga</option>
-        <option value="sensor_turbo">Sensor presión turbo fuera de rango</option>
-        <option value="sensor_pedal">Sensor pedal acelerador incoherente</option>
-        <option value="can_h_cortocircuito">CAN-H cortocircuito a +12V</option>
-        <option value="can_l_masa">CAN-L cortocircuito a masa</option>
-        <option value="resistencia_terminacion">Resistencia terminación CAN defectuosa</option>
-        <option value="can_intermitente">Fallo intermitente bus CAN</option>
-        <option value="can_ambos_cortos">CAN-H y CAN-L cortocircuitados entre sí</option>
-        <option value="airbag_conductor">Airbag conductor sin comunicación</option>
-        <option value="abs_rueda_ti">ABS rueda trasera izquierda defectuoso</option>
-        <option value="esp_desactivado">ESP desactivado por sensor dirección</option>
-        <option value="pretensor_cinturon">Pretensor cinturón con fallo</option>
-        <option value="compresor_ac">Compresor A/C sin señal</option>
-        <option value="sensor_temp_habit">Sensor temperatura habitáculo defectuoso</option>
-        <option value="calef_asientos">Calefacción asientos inoperativa</option>
-        <option value="multiple_motor_can">Fallos múltiples motor + CAN (cascada)</option>
-        <option value="bsi_multiple">BSI con fallos múltiples confort</option>
-        <option value="seguridad_climatiz">Fallos seguridad + climatización</option>
-      </select>
-    </div>
+    <!-- Ya NO hay selector de escenario -->
 
     <div class="fila">
       <button id="btnConectar">Conectar</button>
@@ -302,7 +260,7 @@
 
     <h2>Datos en tiempo real (PIDs simulados)</h2>
     <div class="pids" id="pidsContainer">
-      <!-- Se rellenará por JS -->
+      <!-- Se rellena por JS -->
     </div>
 
     <h2>Registro (log)</h2>
@@ -775,11 +733,15 @@
     }
   };
 
+  // Lista de claves para poder numerar y seleccionar al azar
+  const CLAVES_ESCENARIOS = Object.keys(ESCENARIOS);
+
   // ======= Estado de la simulación =======
   let conectado = false;
   let intervaloPIDs = null;
+  let escenarioActualKey = null;
+  let indiceEscenarioActual = null; // para numerarlo
 
-  const escenarioSelect = document.getElementById("escenario");
   const btnConectar = document.getElementById("btnConectar");
   const btnLeerDTC = document.getElementById("btnLeerDTC");
   const btnBorrarDTC = document.getElementById("btnBorrarDTC");
@@ -803,10 +765,94 @@
     estadoConexion.className = "estado " + clase;
   }
 
+  function elegirEscenarioAleatorio() {
+    const index = Math.floor(Math.random() * CLAVES_ESCENARIOS.length);
+    escenarioActualKey = CLAVES_ESCENARIOS[index];
+    indiceEscenarioActual = index + 1; // numeración humana desde 1
+    const escenario = ESCENARIOS[escenarioActualKey];
+    log(`Escenario ${indiceEscenarioActual} activo: ${escenario.nombre}`);
+    log(`Protocolo de comunicación: ${escenario.protocolo}`);
+  }
+
+  // Datos en tiempo real (PIDs) - inicialización de tarjetas
+  function crearTarjetasPIDs() {
+    pidsContainer.innerHTML = "";
+    const etiquetas = {
+      rpm: "RPM motor",
+      tempRefrigerante: "Temp. refrigerante (°C)",
+      velocidad: "Velocidad (km/h)",
+      tensionBateria: "Tensión batería (V)"
+    };
+    Object.keys(etiquetas).forEach(pid => {
+      const card = document.createElement("div");
+      card.className = "pid-card";
+      card.dataset.pid = pid;
+
+      const label = document.createElement("div");
+      label.className = "pid-label";
+      label.textContent = etiquetas[pid];
+
+      const value = document.createElement("div");
+      value.className = "pid-value";
+      value.textContent = "--";
+
+      card.appendChild(label);
+      card.appendChild(value);
+      pidsContainer.appendChild(card);
+    });
+  }
+
+  crearTarjetasPIDs();
+
+  function actualizarPIDs() {
+    if (!conectado || !escenarioActualKey) return;
+    const escenario = ESCENARIOS[escenarioActualKey];
+
+    Object.entries(escenario.pids).forEach(([pid, config]) => {
+      const card = pidsContainer.querySelector(`.pid-card[data-pid="${pid}"]`);
+      if (!card) return;
+      const valueDiv = card.querySelector(".pid-value");
+
+      const delta = (Math.random() - 0.5) * 2 * config.variacion;
+      let valor = config.base + delta;
+
+      if (pid === "velocidad" && valor < 0) valor = 0;
+      if (pid === "tempRefrigerante" && valor < -40) valor = -40;
+
+      if (pid === "tensionBateria") {
+        valueDiv.textContent = valor.toFixed(1);
+      } else {
+        valueDiv.textContent = Math.round(valor);
+      }
+    });
+  }
+
+  function iniciarPIDs() {
+    if (intervaloPIDs) return;
+    actualizarPIDs();
+    intervaloPIDs = setInterval(actualizarPIDs, 1000);
+    btnIniciarPIDs.disabled = true;
+    btnDetenerPIDs.disabled = false;
+    log("Inicio de lectura de datos en tiempo real (PIDs simulados).");
+  }
+
+  function detenerPIDs() {
+    if (intervaloPIDs) {
+      clearInterval(intervaloPIDs);
+      intervaloPIDs = null;
+      btnIniciarPIDs.disabled = !conectado;
+      btnDetenerPIDs.disabled = true;
+      log("Lectura de PIDs detenida.");
+    }
+  }
+
   // Simulación de conectar/desconectar
   btnConectar.addEventListener("click", () => {
     if (!conectado) {
-      const escenario = ESCENARIOS[escenarioSelect.value];
+      crearTarjetasPIDs();
+      elegirEscenarioAleatorio();
+
+      const escenario = ESCENARIOS[escenarioActualKey];
       log(`Intentando conexión OBD-II... Protocolo detectado: ${escenario.protocolo}`);
       actualizarEstadoConexion("Conectando...", "neutral");
 
@@ -829,15 +875,17 @@
       btnIniciarPIDs.disabled = true;
       btnDetenerPIDs.disabled = true;
       tablaDTC.innerHTML = "";
-      log("Conexión OBD-II finalizada.");
+      escenarioActualKey = null;
+      indiceEscenarioActual = null;
+      log("Conexión OBD-II finalizada. Escenario liberado.");
     }
   });
 
   // Leer DTC
   btnLeerDTC.addEventListener("click", () => {
-    if (!conectado) return;
-    const escenario = ESCENARIOS[escenarioSelect.value];
-    log(`Leyendo códigos de avería (DTC) del escenario: ${escenario.nombre}...`);
+    if (!conectado || !escenarioActualKey) return;
+    const escenario = ESCENARIOS[escenarioActualKey];
+    log(`Leyendo códigos de avería (DTC) del escenario ${indiceEscenarioActual}: ${escenario.nombre}...`);
     tablaDTC.innerHTML = "";
 
     if (!escenario.dtc || escenario.dtc.length === 0) {
@@ -879,88 +927,8 @@
     log("Solicitud de borrado de DTC enviada. Memoria de fallos borrada (simulada).");
   });
 
-  // Datos en tiempo real (PIDs) - inicialización de tarjetas
-  function crearTarjetasPIDs() {
-    pidsContainer.innerHTML = "";
-    const etiquetas = {
-      rpm: "RPM motor",
-      tempRefrigerante: "Temp. refrigerante (°C)",
-      velocidad: "Velocidad (km/h)",
-      tensionBateria: "Tensión batería (V)"
-    };
-    Object.keys(etiquetas).forEach(pid => {
-      const card = document.createElement("div");
-      card.className = "pid-card";
-      card.dataset.pid = pid;
-
-      const label = document.createElement("div");
-      label.className = "pid-label";
-      label.textContent = etiquetas[pid];
-
-      const value = document.createElement("div");
-      value.className = "pid-value";
-      value.textContent = "--";
-
-      card.appendChild(label);
-      card.appendChild(value);
-      pidsContainer.appendChild(card);
-    });
-  }
-
-  crearTarjetasPIDs();
-
-  function actualizarPIDs() {
-    if (!conectado) return;
-    const escenario = ESCENARIOS[escenarioSelect.value];
-
-    Object.entries(escenario.pids).forEach(([pid, config]) => {
-      const card = pidsContainer.querySelector(`.pid-card[data-pid="${pid}"]`);
-      if (!card) return;
-      const valueDiv = card.querySelector(".pid-value");
-
-      const delta = (Math.random() - 0.5) * 2 * config.variacion;
-      let valor = config.base + delta;
-
-      if (pid === "velocidad" && valor < 0) valor = 0;
-      if (pid === "tempRefrigerante" && valor < -40) valor = -40;
-
-      if (pid === "tensionBateria") {
-        valueDiv.textContent = valor.toFixed(1);
-      } else {
-        valueDiv.textContent = Math.round(valor);
-      }
-    });
-  }
-
-  function iniciarPIDs() {
-    if (intervaloPIDs) return;
-    actualizarPIDs();
-    intervaloPIDs = setInterval(actualizarPIDs, 1000);
-    btnIniciarPIDs.disabled = true;
-    btnDetenerPIDs.disabled = false;
-    log("Inicio de lectura de datos en tiempo real (PIDs simulados).");
-  }
-
-  function detenerPIDs() {
-    if (intervaloPIDs) {
-      clearInterval(intervaloPIDs);
-      intervaloPIDs = null;
-      btnIniciarPIDs.disabled = !conectado;
-      btnDetenerPIDs.disabled = true;
-      log("Lectura de PIDs detenida.");
-    }
-  }
-
   btnIniciarPIDs.addEventListener("click", iniciarPIDs);
   btnDetenerPIDs.addEventListener("click", detenerPIDs);
-
-  // Cambiar de escenario resetea solo los PIDs mostrados (si está parado)
-  escenarioSelect.addEventListener("change", () => {
-    if (!intervaloPIDs) {
-      crearTarjetasPIDs();
-    }
-    log(`Escenario seleccionado: ${ESCENARIOS[escenarioSelect.value].nombre}`);
-  });
 </script>
 </body>
 </html>
